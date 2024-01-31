@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/01/31 22:17:00 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:59:17 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ typedef struct s_node
 	struct s_node	*target;
 	struct s_node	*next;
 	struct s_node	*prev;
-	int				pos;
-	int				value;
 }				t_node;
 
 // push_swap.c
