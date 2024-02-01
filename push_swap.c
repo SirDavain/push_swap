@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:41:01 by dulrich           #+#    #+#             */
-/*   Updated: 2024/01/31 22:28:32 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/01 09:03:10 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	create_stack(&a, argv + 1, argc == 2);
+	if (!stack_is_sorted(a))
+	{
+		if (stack_len(a) == 2)
+			sa();
+		else if (stack_len(a) == 3)
+			tiny_sort();
+		else
+			push_swap();
+	}
 }
 
 void	create_stack(t_node **a, char **argv, bool argc_2)
@@ -110,7 +119,30 @@ void	append_node(t_node **stack, int	n)
 	}
 }
 
-int	stack_is_sorted()
+int	stack_is_sorted(t_node *stack)
 {
+	if (stack == NULL)
+		return (1);
+	while (stack->next)
+	{
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	stack_len(t_node *stack)
+{
+	int	len;
 	
+	if (stack == NULL)
+		return (0);
+	len = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		len++;
+	}
+	return (len);
 }
