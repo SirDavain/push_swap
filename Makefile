@@ -1,6 +1,6 @@
 NAME = push_swap
 
-SRC = push_swap.c
+SRC = push_swap.c ps_error.c utils.c swap.c rotate.c rev_rotate.c
 
 OBJ := $(SRC:%.c=%.o)
 

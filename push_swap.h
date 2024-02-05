@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/01 21:29:03 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/04 09:27:30 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ typedef struct s_node
 	struct s_node	*prev;
 	int				pos;
 	int				value;
+	int				fin_index;
+	int				price;
+	bool			above_median;
+	bool			cheapes;
 }				t_node;
 
 // push_swap.c

@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:41:01 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/02 09:57:33 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/04 10:14:54 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ int	main(int argc, char **argv)
 	if (!stack_is_sorted(a))
 	{
 		if (stack_len(a) == 2)
-			sa();
+			sa(&a, false);
 		else if (stack_len(a) == 3)
-			tiny_sort();
+			tiny_sort(&a);
 		else
-			push_swap();
+			push_swap(&a, &b);
 	}
+	free_stack();
 }
 
 void	create_stack(t_node **a, char **argv, bool argc_2)
@@ -67,33 +68,6 @@ void	free_matrix(char **argv)
 	free(argv - 1);
 }
 
-void	free_on_error(t_node **a, char **argv, bool argc_2)
-{
-	free_stack(a);
-	if (argc_2)
-		free_matrix(argv);
-	ft_printf("Error\n");
-	exit(1);
-}
-
-// not sure if while-loop is correct... could skip a nbr if first char isn't '-' or '+'
-int	is_syntax_error(char *s)
-{
-	int	i;
-
-	i = 0;
-	if (!(s[i] == '+' || s[i] == '-' || (s[i] >= '0' && s[i] <= '9')))
-		return (1);
-	if (s[i] == '+' || s[i] == '-' && !(s[i + 1] >= '0' && s[i + 1] <= '9'))
-		return (1);
-	while (s[++i])
-	{
-		if (!(s[i] >= '0' && s[i] <= '9'))
-			return (1);
-	}
-	return (0);
-}
-
 void	append_node(t_node **stack, int	n)
 {
 	t_node	*node;
@@ -113,10 +87,30 @@ void	append_node(t_node **stack, int	n)
 	}
 	else
 	{
-		last_node = find_last_node();
+		last_node = find_last(*stack);
 		last_node->next = node;
 		node->prev = last_node;
 	}
+}
+
+t_node	*find_smallest(t_node *stack)
+{
+	t_node	*smallest_node;
+	long	smallest;
+
+	if (stack == NULL)
+		return (NULL);
+	smallest = LONG_MAX;
+	while (stack)
+	{
+		if (stack->value < smallest)
+		{
+			smallest = stack->value;
+			smallest_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (smallest_node);
 }
 
 int	stack_is_sorted(t_node *stack)
@@ -147,44 +141,6 @@ int	stack_len(t_node *stack)
 	return (len);
 }
 
-void	swap(t_node **head)
-{
-	int	len;
-	
-	len = stack_len(*head);
-	if (*head == NULL || head == NULL || len == 1)
-		return ;
-	*head = (*head)->next;
-	(*head)->prev->prev = *head;
-	(*head)->prev->next = (*head)->next;
-	if ((*head)->next)
-		(*head)->next->prev = (*head)->prev;
-	(*head)->next = (*head)->prev;
-	(*head)->prev = NULL;
-}
-
-void	sa(t_node **a, bool checker)
-{
-	swap(a);
-	if (!checker)
-		write(1, "sa\n", 3);
-}
-
-void	sb(t_node **b, bool checker)
-{
-	swap(b);
-	if (!checker)
-		write(1, "sb\n", 3);
-}
-
-void	ss(t_node **a, t_node **b, bool checker)
-{
-	swap(a);
-	swap(b);
-	if (!checker)
-		write(1, "ss\n", 3);
-}
-
 t_node	*find_biggest(t_node *stack)
 {
 	t_node	*biggest_node;
@@ -205,9 +161,145 @@ t_node	*find_biggest(t_node *stack)
 	return (biggest_node);
 }
 
+t_node	*find_last(t_node *head)
+{
+	if (head == NULL)
+		return (NULL);
+	while (head->next)
+		head = head->next;
+	return (head);
+}
+
+void	set_pos(t_node *stack)
+{
+	int	i;
+	int	middle;
+
+	if (stack == NULL)
+		return ;
+	i = 0;
+	middle = stack_len(stack) / 2;
+	while (stack)
+	{
+		stack->pos = i;
+		if (i <= middle)
+			stack->above_median = true;
+		else
+			stack->above_median = false;
+		stack = stack->next;
+		i++;
+	}
+}
+
+void	find_price(t_node *a, t_node *b)
+{
+	int	len_a;
+	int	len_b;
+
+	len_a = stack_len(a);
+	len_b = stack_len(b);
+	while (b)
+	{
+		b->price = b->pos;
+		if (!(b->above_median))
+			b->price = len_b - (b->pos);
+		if (b->target->above_median)
+			b->price += b->target->pos;
+		else
+			b->price += len_a - (b->target->pos);
+		b = b->next;
+	}
+}
+
+void	set_cheapest(t_node *b)
+{
+	long	best_value;
+	t_node	*best_match_node;
+
+	if (b == NULL)
+		return (NULL);
+	best_value = LONG_MAX;
+	while (b)
+	{
+		
+	}
+}
+
+void	set_target(t_node *a, t_node *b)
+{
+	t_node	*current_a;
+	t_node	*target;
+	long	best_match;
+
+	while (b)
+	{
+		best_match = LONG_MAX;
+		current_a = a;
+		while (current_a)
+		{
+			if (current_a->value > b->value && current_a->value < best_match)
+			{
+				best_match = current_a->value;
+				target = current_a;
+			}
+			current_a = current_a->next;
+		}
+		if (best_match = LONG_MAX)
+			b->target = find_smallest(a);
+		else
+			b->target = target;
+		b = b->next;
+	}
+}
+
+void	init_nodes(t_node *a, t_node *b)
+{
+	set_pos(a);
+	set_pos(b);
+	set_target(a, b);
+	find_price(a, b);
+	set_cheapest(b);
+}
+
 void	tiny_sort(t_node **a)
 {
-	t_node	biggest_nbr;
-	biggest_nbr = find_biggest(*a);
-	if ()
+	t_node	*biggest_node;
+
+	biggest_node = find_biggest(*a);
+	if (*a = biggest_node)
+		ra(a, false);
+	else if ((*a)->next = biggest_node)
+		rra(a, false);
+	if ((*a)->value > (*a)->next->value)
+		sa(a, false);
+}
+
+void	handle_five(t_node **a, t_node **b)
+{
+	while (stack_len(*a) > 3)
+	{
+		init_nodes(*a, *b);
+		finish_rot(a, find_lowest(*a), 'a');
+		pb(b, a, false);
+	}
+}
+
+void	push_swap(t_node **a, t_node **b)
+{
+	t_node	*smallest;
+	int		len_a;
+
+	len_a = stack_len(*a);
+	if (len_a == 5)
+		handle_five(a, b);
+	else
+	{
+		while (len_a-- > 3)
+			pb(b, a, false);
+	}
+	tiny_sort(a);
+	while (*b)
+	{
+		
+	}
 }
