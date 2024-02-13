@@ -1,24 +1,30 @@
 NAME = push_swap
 
-SRC = push_swap.c ps_error.c utils.c swap.c rotate.c rev_rotate.c
+SRC_DIR = ./src
+INC_DIR = ./include
+LIBFT_DIR = ./libft
 
-OBJ := $(SRC:%.c=%.o)
+SRC = push_swap.c ps_error.c utils.c swap.c push.c rotate.c rev_rotate.c \
+		find.c nodes.c set.c sorting.c
+OBJ	= $(SRC:%.c=%.o)
+LIBFT = $(LIBFT_DIR)/libft.a
+LIBS = -L$(LIBFT_DIR) -lft
 
-CC = gcc
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
 
-CFLAGS = -Wall -Wextra -Werror
+HEADERS = -I$(INC_DIR) -I$(LIBFT_DIR)
 
 all: $(NAME)
 
-libft:
-	@make -C libft/
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(HEADERS) $(LIBS) -o $(NAME)
 
-$(NAME): $(OBJ)
-	@make -C libft/
-	$(CC) $^ -Llibft -lft -o $(NAME)
+%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
-%.o: %.c
-	$(CC) $(CFLAGS) -Ilibft -c $< -o $@
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
 
 clean:
 	rm -f $(OBJ)

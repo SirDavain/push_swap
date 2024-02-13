@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/01/30 16:59:17 by dulrich          ###   ########.fr       */
+/*   Created: 2023/09/04 13:42:40 by dulrich           #+#    #+#             */
+/*   Updated: 2023/10/04 12:52:47 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <stdbool.h>
-# include <unistd.h>
-# include <limits.h>
-
-typedef struct s_node
+int	ft_isalnum(int c)
 {
-	struct s_node	*target;
-	struct s_node	*next;
-	struct s_node	*prev;
-}				t_node;
-
-// push_swap.c
-
-#endif
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	else
+		return (0);
+}

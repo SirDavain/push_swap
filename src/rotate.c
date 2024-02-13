@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:24:33 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/03 09:25:03 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/13 09:01:17 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,12 @@ void	rr(t_node **a, t_node **b, bool checker)
 	rotate(b);
 	if (!checker)
 		write(1, "rr\n", 3);
+}
+
+void	rotate_both(t_node **a, t_node **b, t_node *cheapest_node)
+{
+	while (*a != cheapest_node->target && *b != cheapest_node)
+		rr(a, b, false);
+	set_pos(*a);
+	set_pos(*b);
 }

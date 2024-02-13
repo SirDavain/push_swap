@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/04 09:27:30 by dulrich          ###   ########.fr       */
+/*   Created: 2023/09/11 16:13:38 by dulrich           #+#    #+#             */
+/*   Updated: 2023/09/15 11:26:29 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-# include <stdbool.h>
-# include <unistd.h>
-# include <limits.h>
-
-typedef struct s_node
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	struct s_node	*target;
-	struct s_node	*next;
-	struct s_node	*prev;
-	int				pos;
-	int				value;
-	int				fin_index;
-	int				price;
-	bool			above_median;
-	bool			cheapes;
-}				t_node;
+	char			*s1;
+	unsigned int	i;
+	unsigned int	str_len;
 
-// push_swap.c
-
-#endif
+	if (!s)
+		return (NULL);
+	str_len = ft_strlen(s) + 1;
+	s1 = (char *)malloc(str_len * sizeof(char));
+	if (!s1)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		s1[i] = f(i, s[i]);
+		i++;
+	}
+	s1[i] = '\0';
+	return (s1);
+}

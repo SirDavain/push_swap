@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 14:13:12 by dulrich           #+#    #+#             */
-/*   Updated: 2024/01/31 14:13:55 by dulrich          ###   ########.fr       */
+/*   Created: 2023/09/12 15:23:44 by dulrich           #+#    #+#             */
+/*   Updated: 2023/09/14 13:47:27 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long	ft_atol(const char *str)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int		i;
-	long	result;
-	int		sign;
+	unsigned int	i;
 
+	if (!s || !f)
+		return ;
 	i = 0;
-	while (str[i] && (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+	while (s[i])
+	{
+		f(i, &s[i]);
 		i++;
-	sign = 1;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
 	}
-	result = 0;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result *= 10;
-		result += str[i++] - '0';
-	}
-	return (result * sign);
 }
