@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/13 10:00:29 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/14 21:07:19 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	finish_rot(t_node **stack, t_node *top, char stack_name);
 // ps_error.c
 void	free_on_error(t_node **a, char **argv, bool argc_2);
 int		is_syntax_error(char *s);
+void	free_stack(t_node **stack);
 
 // utils.c
 long	ft_atol(const char *str);
@@ -94,5 +95,8 @@ int		stack_is_sorted(t_node *stack);
 void	tiny_sort(t_node **a);
 void	handle_five(t_node **a, t_node **b);
 void	push_swap(t_node **a, t_node **b);
+
+// alt_split.c
+char	**alt_split(char *str, char separator);
 
 #endif

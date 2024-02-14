@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 09:05:38 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/13 09:12:13 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:01:05 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	append_node(t_node **stack, int	n)
 	node = malloc(sizeof(t_node));
 	if (node == NULL)
 		return ;
-	node->next == NULL;
+	node->next = NULL;
 	node->value = n;
 	if (*stack == NULL)
 	{

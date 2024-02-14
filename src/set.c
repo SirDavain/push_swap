@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 09:08:33 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/13 09:09:08 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:02:56 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	set_to_cheapest(t_node *b)
 	t_node	*best_match;
 
 	if (b == NULL)
-		return (NULL);
+		return ;
 	best_value = LONG_MAX;
 	while (b)
 	{
@@ -72,7 +72,7 @@ void	set_target(t_node *a, t_node *b)
 			}
 			current_a = current_a->next;
 		}
-		if (best_match = LONG_MAX)
+		if (best_match == LONG_MAX)
 			b->target = find_smallest(a);
 		else
 			b->target = target;

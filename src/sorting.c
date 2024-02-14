@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 09:01:39 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/13 09:10:03 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/13 17:03:31 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	tiny_sort(t_node **a)
 	t_node	*biggest_node;
 
 	biggest_node = find_biggest(*a);
-	if (*a = biggest_node)
+	if (*a == biggest_node)
 		ra(a, false);
-	else if ((*a)->next = biggest_node)
+	else if ((*a)->next == biggest_node)
 		rra(a, false);
 	if ((*a)->value > (*a)->next->value)
 		sa(a, false);

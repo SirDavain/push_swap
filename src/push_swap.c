@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:41:01 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/13 09:11:43 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/14 21:05:47 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
+		argv = alt_split(argv[1], ' ');
 	create_stack(&a, argv + 1, argc == 2);
 	if (!stack_is_sorted(a))
 	{
@@ -45,10 +45,10 @@ void	create_stack(t_node **a, char **argv, bool argc_2)
 	while (argv[i])
 	{
 		if (is_syntax_error(argv[i]))
-			free_on_error(a, argv[i], argc_2);
+			free_on_error(a, argv, argc_2);
 		n = atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			free_on_error(a, argv[i], argc_2);
+			free_on_error(a, argv, argc_2);
 		append_node(a, (int)n);
 		i++;
 	}
