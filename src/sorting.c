@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 09:01:39 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/13 17:03:31 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:16:26 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,20 @@ void	handle_five(t_node **a, t_node **b)
 	}
 }
 
+void	push_swap_helper(t_node *smallest, t_node **a)
+{
+	if (smallest->above_median)
+	{
+		while (*a != smallest)
+			ra(a, false);
+	}
+	else
+	{
+		while (*a != smallest)
+			rra(a, false);
+	}
+}
+
 void	push_swap(t_node **a, t_node **b)
 {
 	t_node	*smallest;
@@ -69,14 +83,5 @@ void	push_swap(t_node **a, t_node **b)
 	}
 	set_pos(*a);
 	smallest = find_smallest(*a);
-	if (smallest->above_median)
-	{
-		while (*a != smallest)
-			ra(a, false);
-	}
-	else
-	{
-		while (*a != smallest)
-			rra(a, false);
-	}
+	push_swap_helper(smallest, a);
 }

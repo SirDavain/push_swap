@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/14 21:07:19 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:14:40 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		stack_is_sorted(t_node *stack);
 void	tiny_sort(t_node **a);
 void	handle_five(t_node **a, t_node **b);
 void	push_swap(t_node **a, t_node **b);
+void	push_swap_helper(t_node *smallest, t_node **a);
 
 // alt_split.c
 char	**alt_split(char *str, char separator);
