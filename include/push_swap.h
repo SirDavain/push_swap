@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/18 09:14:40 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/21 22:14:48 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	finish_rot(t_node **stack, t_node *top, char stack_name);
 void	free_on_error(t_node **a, char **argv, bool argc_2);
 int		is_syntax_error(char *s);
 void	free_stack(t_node **stack);
+int		is_duplicate(t_node *a, int n);
 
 // utils.c
 long	ft_atol(const char *str);

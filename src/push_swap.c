@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 08:41:01 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/18 09:08:31 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/21 22:15:10 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	create_stack(t_node **a, char **argv, bool argc_2)
 			free_on_error(a, argv, argc_2);
 		n = atol(argv[i]);
 		if (n > INT_MAX || n < INT_MIN)
+			free_on_error(a, argv, argc_2);
+		if (is_duplicate(*a, (int)n))
 			free_on_error(a, argv, argc_2);
 		append_node(a, (int)n);
 		i++;

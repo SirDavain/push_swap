@@ -6,11 +6,25 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:38:21 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/18 09:04:17 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/21 21:47:25 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	free_split(char **arr_of_str)
+{
+	int		i;
+
+	i = 0;
+	while (arr_of_str[i])
+	{
+		free(arr_of_str[i]);
+		i++;
+	}
+	free(arr_of_str);
+	exit(1);
+}
 
 static int	count_words(char *str, char separator)
 {
@@ -77,7 +91,7 @@ char	**alt_split(char *str, char separator)
 		{
 			arr_of_str[i] = malloc(sizeof(char));
 			if (arr_of_str[i] == NULL)
-				return (NULL);
+				free_split(arr_of_str);
 			arr_of_str[i++][0] = '\0';
 			continue ;
 		}
