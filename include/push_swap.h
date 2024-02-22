@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/21 22:14:48 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/22 14:25:56 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	find_price(t_node *a, t_node *b);
 // nodes.c
 void	init_nodes(t_node *a, t_node *b);
 void	move_nodes(t_node **a, t_node **b);
-void	append_node(t_node **stack, int	n);
+void	append_node(t_node **stack, int n);
 
 // set.c
 void	set_pos(t_node *stack);

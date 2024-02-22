@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:25:15 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/03 09:25:39 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/22 14:26:16 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	swap(t_node **head)
 {
 	int	len;
-	
+
 	len = stack_len(*head);
 	if (*head == NULL || head == NULL || len == 1)
 		return ;

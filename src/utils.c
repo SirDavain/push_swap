@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 14:13:12 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/13 09:10:43 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/22 14:26:17 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	free_matrix(char **argv)
 int	stack_len(t_node *stack)
 {
 	int	len;
-	
+
 	if (stack == NULL)
 		return (0);
 	len = 0;
