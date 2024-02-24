@@ -6,7 +6,7 @@
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 14:48:25 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/22 14:25:56 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:46:51 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	handle_five(t_node **a, t_node **b);
 void	push_swap(t_node **a, t_node **b);
 void	push_swap_helper(t_node *smallest, t_node **a);
 
-// alt_split.c
-char	**alt_split(char *str, char separator);
+// ps_split.c
+char	**ps_split(char *str, char separator);
 
 #endif

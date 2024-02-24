@@ -5,7 +5,7 @@ INC_DIR = ./include
 LIBFT_DIR = ./libft
 
 SRC = push_swap.c ps_error.c utils.c swap.c push.c rotate.c rev_rotate.c \
-		find.c nodes.c set.c sorting.c alt_split.c
+		find.c nodes.c set.c sorting.c ps_split.c
 OBJ	= $(SRC:%.c=%.o)
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBS = -L$(LIBFT_DIR) -lft

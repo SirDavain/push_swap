@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   alt_split.c                                        :+:      :+:    :+:   */
+/*   ps_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dulrich <dulrich@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:38:21 by dulrich           #+#    #+#             */
-/*   Updated: 2024/02/21 21:47:25 by dulrich          ###   ########.fr       */
+/*   Updated: 2024/02/24 12:46:50 by dulrich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static char	*get_next_word(char *str, char separator)
 		index++;
 	while (str[index + len] && (str[index + len] != separator))
 		len++;
-	next_str = malloc((size_t)len * sizeof(char) + 1);
+	next_str = malloc(len * sizeof(char) + 1);
 	if (!next_str)
 		return (NULL);
 	while (str[index] && (str[index] != separator))
@@ -72,7 +72,7 @@ static char	*get_next_word(char *str, char separator)
 	return (next_str);
 }
 
-char	**alt_split(char *str, char separator)
+char	**ps_split(char *str, char separator)
 {
 	int		nbr_of_words;
 	char	**arr_of_str;
@@ -82,7 +82,7 @@ char	**alt_split(char *str, char separator)
 	nbr_of_words = count_words(str, separator);
 	if (!nbr_of_words)
 		exit(1);
-	arr_of_str = malloc(sizeof(char *) * (size_t)(nbr_of_words + 2));
+	arr_of_str = malloc(sizeof(char *) * nbr_of_words + 2);
 	if (!arr_of_str)
 		return (NULL);
 	while (nbr_of_words-- >= 0)
